@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>To do list</title>
+            <meta charset="UTF-8">
+            <!-- Used this link to get the remove mark only/using font-awesome to get the remove mark-->
+            <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+            
+        
+    </head>
+  <body style="background-color: azure;">
+    <link rel="stylesheet" type="text/css" href="home.css"/>
+        <div>
+            <ul class="nav">
+                <li class="li"><a href="home.html"target="_blank">Home</a></li>
+                
+                <li class="li"><a href="queries.html" target="_blank">Queries</a></li>
+                <li class="li"><a href="contact_us.html" target="_blank">Contact Us</a></li>
+                <li class="li"><a href="to_do.html" target="_blank">To Do List</a></li>
+                <li class="li"><a href="about_us.html" target="_blank">About Us</a></li>
+                
+              </ul> 
+        </div><br>
+        <div id="app">
+          <div style="padding:25px;">
+            <h2>{{message}}</h2>
+            <div>
+              <form>
+                <lable for="todo list"style="font-family: Arial, Helvetica, sans-serif;">Enter what you want to do or Where you want to go...</label><br><br>
+                <input type="text" ref="textbox" v-model="newtodolist" placeholder="Input your tasks here..." style="padding: 13px 30px; width:50%;"><br><br>
+                <button type="button" ref="textbox" v-on:click="addTodo" style="background-color: rgb(38, 173, 173); font-family: Arial, Helvetica, sans-serif;  padding: 10px 25px; color:darkblue; font-size: 15px;">Add</button>
+              </form>
+              <div>
+                <ul>
+                  <li v-for="(todolist,index) in todolists" :key="index" style="font-family: 'Courier New', Courier, monospace;">
+                  {{todolist.text}}
+                  <button v-on:click="removeTodo(index)" style="background-color: lightcoral;">
+                     <span class="fa fa-remove"></span>
+                  </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+         <script>
+         var app = new Vue({
+           el:'#app',
+           data: {
+             message: "ToDo List",
+             todolists :[
+               {text:"Visit Anuradhapura"},
+               {text:"Watch Sunset"},
+               {text:"Go to the Beach"},
+             ],
+             newtodolist: ""
+           },
+           methods:{
+            addTodo:function(){
+              this.todolists.push({text:this.newtodolist});
+              this.$refs.textbox.focus()
+              this.newtodolist= ""
+            },
+            removeTodo:function(index){
+              this.todolists.splice(index,1);
+            }
+           }
+         })
+         </script>
+         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+         <div>
+            <footer> 
+                <span>&#169;</span>2021. 
+                Pearl of the Indian Ocean 
+                <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4tZ2IifQ%3D%3D%22%7D" target="_blank">Twitter</a>
+     </footer>          
+        </div>
+
+          
+        
+          
+          </body>
+          </html>
+      
